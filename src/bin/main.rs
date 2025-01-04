@@ -1,10 +1,7 @@
 use bevy::prelude::*;
 
-use playground;
+use playground::CorePlugin;
 
 fn main() {
-    App::new()
-        .add_plugins(DefaultPlugins)
-        .add_plugins(playground::GenesisPlugin)
-        .run();
+    App::new().add_plugins(CorePlugin).run();
 }
