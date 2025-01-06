@@ -3,6 +3,7 @@ use bevy_prng::WyRand;
 use bevy_rand::prelude::{ForkableRng, GlobalEntropy};
 
 use crate::actions::{Hunting, Wondering};
+use crate::distancing::Distance;
 use crate::health::Health;
 
 #[derive(Component, Default)]
@@ -82,6 +83,12 @@ fn setup(
         Vec3::new(-200.0, 100.0, 0.0),
         Vec3::new(-300.0, 200.0, 0.0),
         Vec3::new(-200.0, 300.0, 0.0),
+        Vec3::new(-100.0, 300.0, 0.0),
+        Vec3::new(100.0, 300.0, 0.0),
+        Vec3::new(200.0, 300.0, 0.0),
+        Vec3::new(300.0, 200.0, 0.0),
+        Vec3::new(200.0, 100.0, 0.0),
+        Vec3::new(100.0, 100.0, 0.0),
     ];
     let fox_texture = asset_server.load("icons/animals/fox/atlas.png");
     let fox_layout = TextureAtlasLayout::from_grid(UVec2::splat(128), 4, 1, None, None);
@@ -99,6 +106,7 @@ fn setup(
                 ),
                 Transform::from_translation(location).with_scale(Vec3::splat(0.75)),
                 Fox,
+                Distance,
                 Hunting::new(0.15),
             ))
             .with_child((
