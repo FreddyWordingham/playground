@@ -3,20 +3,21 @@ use bevy_prng::WyRand;
 use bevy_rand::prelude::Entropy;
 use rand::prelude::Rng;
 
-use crate::{genesis::Herbivore, health::DamageEvent};
+use crate::{genesis::Herbivore, health::DamageEvent, movement::Velocity};
+
+const CHASE_SPEED: f32 = 0.2;
+const ATTACK_DISTANCE: f32 = 10.0;
+const ATTACK_CHANCE: f32 = 0.01;
 
 #[derive(Component)]
+#[require(Velocity)]
 pub struct Hunting {
     target: Option<Entity>,
-    speed: f32,
 }
 
 impl Hunting {
-    pub fn new(speed: f32) -> Self {
-        Self {
-            target: None,
-            speed,
-        }
+    pub fn new() -> Self {
+        Self { target: None }
     }
 }
 
@@ -29,21 +30,26 @@ impl Plugin for HuntPlugin {
 }
 
 fn hunting_system(
-    mut query: Query<(&mut Entropy<WyRand>, &mut Hunting, &mut Transform)>,
+    mut query: Query<(
+        &mut Entropy<WyRand>,
+        &mut Hunting,
+        &mut Velocity,
+        &Transform,
+    )>,
     targets: Query<(Entity, &Transform), (With<Herbivore>, Without<Hunting>)>,
     mut damage_queue: ResMut<Events<DamageEvent>>,
 ) {
-    for (mut rng, mut hunting, mut transform) in &mut query {
+    for (mut rng, mut hunting, mut velocity, transform) in &mut query {
         // If there is a target, move towards it and attack it when close enough
         if let Some(target) = hunting.target {
             if let Ok((_entity, target_transform)) = targets.get(target) {
-                let direction = target_transform.translation - transform.translation;
-                let distance = direction.length();
-                if distance > 10.0 {
-                    let direction = direction / distance;
-                    transform.translation += direction * hunting.speed;
+                let delta = target_transform.translation - transform.translation;
+                let distance = delta.length();
+                if distance > ATTACK_DISTANCE {
+                    let direction = delta / distance;
+                    velocity.walking = direction * CHASE_SPEED;
                 } else {
-                    if rng.gen_bool(0.01) {
+                    if rng.gen_bool(ATTACK_CHANCE as f64) {
                         let event = DamageEvent::new(target, 100);
                         damage_queue.send(event);
                     }

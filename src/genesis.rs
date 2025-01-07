@@ -104,14 +104,14 @@ fn setup(
                         index: 0,
                     },
                 ),
-                Transform::from_translation(location).with_scale(Vec3::splat(0.75)),
+                Transform::from_translation(location).with_scale(Vec3::splat(0.5)),
                 Fox,
                 Distance,
-                Hunting::new(0.15),
+                Hunting::new(),
             ))
             .with_child((
                 Text2d::new("fox"),
-                Transform::from_scale(Vec3::splat(0.7))
+                Transform::from_scale(Vec3::splat(1.0))
                     .with_translation(Vec3::new(0.0, -30.0, 1.0)),
             ));
     }
@@ -140,7 +140,7 @@ fn setup(
                 ),
                 Transform::from_translation(location).with_scale(Vec3::splat(1.0)),
                 Rabbit,
-                Wondering::new(0.2),
+                Wondering::new(location),
             ))
             .with_child((
                 Text2d::new("rabbit"),

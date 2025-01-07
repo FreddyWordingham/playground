@@ -8,6 +8,7 @@ mod camera;
 mod distancing;
 mod genesis;
 mod health;
+mod movement;
 mod status;
 
 pub struct CorePlugin;
@@ -20,6 +21,7 @@ impl Plugin for CorePlugin {
             .add_plugins(camera::CameraPlugin)
             .add_plugins(status::StatusPlugin)
             .add_plugins(health::HealthPlugin)
+            .add_plugins(movement::MovementPlugin)
             .add_plugins(distancing::DistancingPlugin)
             .add_plugins(actions::WonderPlugin)
             .add_plugins(actions::HuntPlugin)
