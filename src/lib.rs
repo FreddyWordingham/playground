@@ -7,6 +7,7 @@ mod agent;
 mod camera;
 mod distancing;
 mod genesis;
+mod grid;
 mod health;
 mod movement;
 mod status;
@@ -21,6 +22,7 @@ impl Plugin for CorePlugin {
             .add_plugins(camera::CameraPlugin)
             .add_plugins(status::StatusPlugin)
             .add_plugins(health::HealthPlugin)
+            .add_plugins(grid::GridPlugin)
             .add_plugins(movement::MovementPlugin)
             .add_plugins(distancing::DistancingPlugin)
             .add_plugins(actions::WonderPlugin)
