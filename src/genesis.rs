@@ -4,14 +4,15 @@ use bevy_rand::prelude::{ForkableRng, GlobalEntropy};
 
 use crate::actions::{Hunting, Wondering};
 use crate::distancing::Distance;
+use crate::grid::GridPosition;
 use crate::health::Health;
 
 #[derive(Component, Default)]
-#[require(Health)]
+#[require(Health, GridPosition)]
 struct Plant;
 
 #[derive(Component, Default)]
-#[require(Health)]
+#[require(Health, GridPosition)]
 struct Animal;
 
 #[derive(Component, Default)]
