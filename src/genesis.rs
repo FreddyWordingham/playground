@@ -56,7 +56,7 @@ fn setup(
         Vec3::new(100.0, -200.0, -1.0),
         Vec3::new(-100.0, -200.0, -1.0),
     ];
-    let bush_texture = asset_server.load("icons/plants/bush/atlas.png");
+    let bush_texture = asset_server.load("icons/plants/shrub/berry_bush/atlas.png");
     let bush_layout = TextureAtlasLayout::from_grid(UVec2::splat(128), 3, 1, None, None);
     let bush_texture_atlas_layout = texture_atlas_layouts.add(bush_layout);
     for location in bush_locations {
