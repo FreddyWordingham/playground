@@ -1,8 +1,8 @@
 use bevy::{color::palettes::css::*, math::Isometry2d, prelude::*};
 
 const CELL_SIZE: f32 = 50.0;
-const GRID_HEIGHT: u32 = 4;
-const GRID_WIDTH: u32 = 4;
+const GRID_HEIGHT: u32 = 5;
+const GRID_WIDTH: u32 = 5;
 
 #[derive(Component, Default)]
 #[require(Transform)]
@@ -49,8 +49,8 @@ fn render_grid(mut gizmos: Gizmos) {
 
 fn render_grid_positions(mut gizmos: Gizmos, query: Query<&GridPosition>) {
     for pos in query.iter() {
-        let x = (pos.x as f32 * CELL_SIZE);
-        let y = (pos.y as f32 * CELL_SIZE);
+        let x = pos.x as f32 * CELL_SIZE;
+        let y = pos.y as f32 * CELL_SIZE;
         let isometry = Isometry2d::from_translation(Vec2::new(x, y));
         gizmos.rect_2d(isometry, Vec2::splat(CELL_SIZE), YELLOW);
     }
