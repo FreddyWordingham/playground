@@ -1,8 +1,8 @@
 use bevy::{color::palettes::css::*, math::Isometry2d, prelude::*};
 
-const CELL_SIZE: f32 = 50.0;
-const GRID_HEIGHT: u32 = 5;
-const GRID_WIDTH: u32 = 5;
+pub const CELL_SIZE: f32 = 50.0;
+pub const GRID_HEIGHT: i32 = 49;
+pub const GRID_WIDTH: i32 = 49;
 
 #[derive(Component, Default)]
 #[require(Transform)]
@@ -39,7 +39,7 @@ fn render_grid(mut gizmos: Gizmos) {
     gizmos
         .grid_2d(
             Isometry2d::IDENTITY,
-            UVec2::new(GRID_WIDTH, GRID_HEIGHT),
+            UVec2::new(GRID_WIDTH as u32, GRID_HEIGHT as u32),
             Vec2::new(CELL_SIZE, CELL_SIZE),
             // Dark gray
             LinearRgba::gray(0.05),

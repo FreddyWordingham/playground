@@ -51,10 +51,10 @@ fn setup(
 ) {
     // Bushes
     let bush_locations = vec![
-        Vec3::new(200.0, 300.0, -1.0),
-        Vec3::new(400.0, -100.0, -1.0),
-        Vec3::new(100.0, -200.0, -1.0),
-        Vec3::new(-100.0, -200.0, -1.0),
+        Vec3::new(200.0, 300.0, 1.0),
+        Vec3::new(400.0, -100.0, 1.0),
+        Vec3::new(100.0, -200.0, 1.0),
+        Vec3::new(-100.0, -200.0, 1.0),
     ];
     let bush_texture = asset_server.load("icons/plants/shrub/berry_bush/atlas.png");
     let bush_layout = TextureAtlasLayout::from_grid(UVec2::splat(128), 3, 1, None, None);
@@ -81,15 +81,15 @@ fn setup(
 
     // Foxes
     let fox_locations = vec![
-        Vec3::new(-200.0, 100.0, 0.0),
-        Vec3::new(-300.0, 200.0, 0.0),
-        Vec3::new(-200.0, 300.0, 0.0),
-        Vec3::new(-100.0, 300.0, 0.0),
-        Vec3::new(100.0, 300.0, 0.0),
-        Vec3::new(200.0, 300.0, 0.0),
-        Vec3::new(300.0, 200.0, 0.0),
-        Vec3::new(200.0, 100.0, 0.0),
-        Vec3::new(100.0, 100.0, 0.0),
+        Vec3::new(-200.0, 100.0, 2.0),
+        Vec3::new(-300.0, 200.0, 2.0),
+        Vec3::new(-200.0, 300.0, 2.0),
+        Vec3::new(-100.0, 300.0, 2.0),
+        Vec3::new(100.0, 300.0, 2.0),
+        Vec3::new(200.0, 300.0, 2.0),
+        Vec3::new(300.0, 200.0, 2.0),
+        Vec3::new(200.0, 100.0, 2.0),
+        Vec3::new(100.0, 100.0, 2.0),
     ];
     let fox_texture = asset_server.load("icons/animals/fox/atlas.png");
     let fox_layout = TextureAtlasLayout::from_grid(UVec2::splat(128), 4, 1, None, None);
@@ -119,11 +119,11 @@ fn setup(
 
     // Rabbits
     let rabbit_locations = vec![
-        Vec3::new(200.0, -100.0, 0.0),
-        Vec3::new(300.0, -200.0, 0.0),
-        Vec3::new(200.0, -300.0, 0.0),
-        Vec3::new(100.0, -300.0, 0.0),
-        Vec3::new(-100.0, -300.0, 0.0),
+        Vec3::new(200.0, -100.0, 2.0),
+        Vec3::new(300.0, -200.0, 2.0),
+        Vec3::new(200.0, -300.0, 2.0),
+        Vec3::new(100.0, -300.0, 2.0),
+        Vec3::new(-100.0, -300.0, 2.0),
     ];
     let rabbit_texture = asset_server.load("icons/animals/rabbit/atlas.png");
     let rabbit_layout = TextureAtlasLayout::from_grid(UVec2::splat(64), 4, 1, None, None);
