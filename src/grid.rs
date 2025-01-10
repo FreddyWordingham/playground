@@ -1,8 +1,8 @@
 use bevy::{color::palettes::css::*, math::Isometry2d, prelude::*};
 
 pub const CELL_SIZE: f32 = 50.0;
-pub const GRID_HEIGHT: i32 = 49;
-pub const GRID_WIDTH: i32 = 49;
+pub const GRID_HEIGHT: i32 = 249;
+pub const GRID_WIDTH: i32 = 249;
 
 #[derive(Component, Default)]
 #[require(Transform)]
